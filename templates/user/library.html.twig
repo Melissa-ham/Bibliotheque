@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Bibliothèque
+{% endblock %}
+
+{% block body %}
+
+<h1>
+    Bibliothèque de {{ user.prenom }}
+</h1>
+
+<h2>Ajouter un livre</h2>
+
+<form method="POST">
+
+    <select name="book">
+
+        {% for book in allBooks %}
+
+            <option value="{{ book.id }}">
+
+                {{ book.titre }}
+
+            </option>
+
+        {% endfor %}
+
+    </select>
+
+    <button type="submit">
+        Ajouter
+    </button>
+
+</form>
+
+<hr>
+
+<h2>
+    Livres de l'utilisateur
+</h2>
+
+{% for book in user.books %}
+
+    <p>
+
+        {{ book.titre }}
+
+    </p>
+
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des utilisateurs{% endblock %}
+
+{% block body %}
+
+<h1>Liste des utilisateurs</h1>
+
+<a href="{{ path('user_create') }}">
+    Ajouter un utilisateur
+</a>
+
+{% for user in users %}
+
+    <p>
+
+        {{ user.prenom }}
+        {{ user.nom }}
+        {{ user.email }}
+
+        <a href="{{ path('user_delete', {id: user.id}) }}">
+            Supprimer
+        </a>
+
+    </p>
+
+{% endfor %}
+
+{% endblock %}
