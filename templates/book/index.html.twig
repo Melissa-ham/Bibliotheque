@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BookController!{% endblock %}
+
+{% block body %}
+
+
+<h1>Liste des livres</h1>
+
+  <a href="/books/create">Ajouter un livre</a>
+
+{% for book in books %}
+
+    <p>
+        {{ book.titre }}
+        {{ book.author.nom }}
+        {{ book.author.prenom }}
+
+        <a href="/books/delete/{{ book.id }}">
+            Supprimer
+        </a>
+    </p>
+
+{% endfor %}
+
+{% endblock %}
