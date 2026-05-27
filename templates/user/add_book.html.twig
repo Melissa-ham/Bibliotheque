@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block title %} Ajouter un livre {% endblock %}
+
+{% block body %}
+<h1>
+    Ajouter un livre à la bibliothèque 
+</h1>
+
+<p>
+    Utilisateur : {{ user.prenom }}
+</p>
+
+{{ form_start(form) }}
+    
+    {{ form_row(form.books) }}
+
+    <button type="submit">
+        Ajouter
+    </button>
+
+{{ form_end(form) }} 
+{% endblock %}
