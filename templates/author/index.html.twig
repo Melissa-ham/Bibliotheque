@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}liste des auteurs{% endblock %}
+
+{% block body %}
+
+
+<h1>liste des auteurs</h1>
+
+  {% for author in authors %}
+   <p> 
+    {{ author.nom }}
+    {{ author.prenom }} 
+     <a href="/authors/delete/{{ author.id }}">
+         Supprimer
+         
+     </a> 
+    </p>
+  {% endfor %}
+  <a href="/authors/create/">
+         create
+         
+     </a> 
+
+
+{% endblock %}
