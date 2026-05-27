@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un livre{% endblock %}
+
+{% block body %}
+
+<h1>Créer un livre</h1>
+
+{{ form_start(form) }}
+
+    {{ form_row(form.titre) }}
+
+    {{ form_row(form.anneedepublication) }}
+
+    {{ form_row(form.author) }}
+
+    <button type="submit">Créer</button>
+
+{{ form_end(form) }}
+
+{% endblock %}
