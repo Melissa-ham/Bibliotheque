@@ -52,19 +52,14 @@ final class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/delete/{id}', name: 'user_delete', methods: ['GET'])]
+    #[Route('/delete/{id}', name: 'user_delete', methods: ['POST'])]
     public function delete(
         int $id,
         UserRepository $userRepository,
         EntityManagerInterface $entityManager
     ): Response
     {
-        $user = $userRepository->find($id);
-
-        if (!$user) {
-            throw $this->createNotFoundException('Utilisateur introuvable');
-        }
-
+       
         $entityManager->remove($user);
 
         $entityManager->flush();
