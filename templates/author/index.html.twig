@@ -11,10 +11,12 @@
    <p> 
     {{ author.nom }}
     {{ author.prenom }} 
-     <a href="/authors/delete/{{ author.id }}">
-         Supprimer
-         
-     </a> 
+    <form action="{{ url('author_delete', { id: author.id }) }}" method="post">
+    {# the argument of csrf_token() is the ID of this token #}
+    <input type="hidden" name="token" value="{{ csrf_token('delete-item') }}">
+
+    <button type="submit">Delete item</button>
+</form>
     </p>
   {% endfor %}
   <a href="/authors/create/">
