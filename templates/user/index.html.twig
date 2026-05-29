@@ -17,10 +17,12 @@
         {{ user.prenom }}
         {{ user.nom }}
         {{ user.email }}
+<form action="{{ url('user_delete', { id: user.id }) }}" method="post">
+    {# the argument of csrf_token() is the ID of this token #}
+    <input type="hidden" name="token" value="{{ csrf_token('delete-item') }}">
 
-        <a href="{{ path('user_delete', {id: user.id}) }}">
-            Supprimer
-        </a>
+    <button type="submit">Delete item</button>
+</form>
 
     </p>
 
