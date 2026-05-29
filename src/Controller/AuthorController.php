@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-#[Route('/authors')]  // c'est notre route principale
+#[Route('/authors')]  
 final class AuthorController extends AbstractController
 {
     #[Route('', name: 'author_list', methods: ['GET'])]
@@ -52,16 +52,11 @@ final class AuthorController extends AbstractController
 
     #[Route('/delete/{id}', name: 'author_delete', methods: ['GET'])]
     public function delete(
-        int $id,
+        Author $author,
         AuthorRepository $authorRepository,
         EntityManagerInterface $entityManager
     ): Response
     {
-        $author = $authorRepository->find($id);
-
-        if (!$author) {
-            throw $this->createNotFoundException('Auteur introuvable');
-        }
 
         if ($author->getBooks()->isEmpty()) {
             $entityManager->remove($author);
