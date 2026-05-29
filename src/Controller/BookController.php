@@ -50,18 +50,13 @@ final class BookController extends AbstractController
         ]);
     }
 
-    #[Route('/delete/{id}', name: 'book_delete', methods: ['GET'])]
+    #[Route('/delete/{id}', name: 'book_delete', methods: ['POST'])]
     public function delete(
-        int $id,
+        Book $book,
         BookRepository $bookRepository,
         EntityManagerInterface $entityManager
     ): Response
     {
-        $book = $bookRepository->find($id);
-
-        if (!$book) {
-            throw $this->createNotFoundException('Livre introuvable');
-        }
 
         $entityManager->remove($book);
 
