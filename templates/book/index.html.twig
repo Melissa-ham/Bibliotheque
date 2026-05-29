@@ -15,10 +15,12 @@
         {{ book.titre }}
         {{ book.author.nom }}
         {{ book.author.prenom }}
+<form action="{{ url('book_delete', { id: book.id }) }}" method="post">
+    {# the argument of csrf_token() is the ID of this token #}
+    <input type="hidden" name="token" value="{{ csrf_token('delete-item') }}">
 
-        <a href="/books/delete/{{ book.id }}">
-            Supprimer
-        </a>
+    <button type="submit">Delete item </button>
+</form>
     </p>
 
 {% endfor %}
